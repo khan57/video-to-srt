@@ -1,0 +1,26 @@
+[project]
+name = "video-to-srt"
+version = "0.1.0"
+description = "Turn an English MP4 into an SRT subtitle file, locally, using Whisper on Apple Silicon."
+license = "MIT"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "python-multipart>=0.0.9",
+    "mlx-whisper>=0.4",
+]
+
+[project.scripts]
+video-to-srt = "app.main:run"
+
+[dependency-groups]
+dev = ["pytest>=8", "httpx>=0.27"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
